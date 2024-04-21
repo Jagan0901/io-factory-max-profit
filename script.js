@@ -3,7 +3,7 @@ function getValue() {
   
   const maxProfit = getMaxProfit(userInput);
   const solution = maxProfit.solution;
-  alert(`Solution: ${JSON.stringify(solution)},  Earnings: ${maxProfit.Earnings}`);
+  alert(`Solution: ${JSON.stringify(solution)},  Earnings: $${maxProfit.Earnings}`);
 }
 
 // The function will return max profit. Whether it can be theatre, pub or commercials
