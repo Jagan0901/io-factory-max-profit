@@ -14,6 +14,8 @@ const getMaxProfit = (input)=>{
 
   const theatreTimes = 0;
 
+  if(input<4) return alert('Please enter valid units...')
+
   //Theatre Data
   const theatreEarnings = calculateTheatre(input, theatreTimes);
   var theatreProfit = theatreEarnings.profit * theatre;
