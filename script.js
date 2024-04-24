@@ -13,24 +13,25 @@ const getMaxProfit = (input)=>{
   const park = 3000;
 
   const theatreTimes = 0;
+  const pf = 0;
 
   if(input<4) return alert('Please enter valid units...')
 
   //Theatre Data
-  const theatreEarnings = calculateTheatre(input, theatreTimes);
-  var theatreProfit = theatreEarnings.profit * theatre;
+  const theatreEarnings = calculateTheatre(input, theatreTimes,pf);
+  var theatreProfit = theatreEarnings.profit ;
   var theatreCount = theatreEarnings.count;
 
   //Pub Data
-  const pubEarnings = calculatePub(input, theatreTimes);
-  var pubProfit = pubEarnings.profit * pub;
+  const pubEarnings = calculatePub(input, theatreTimes,pf);
+  var pubProfit = pubEarnings.profit;
   var pubCount = pubEarnings.count;
 
 
   //Commercials Data
   if(input>9){
-  const commercialEarnings = calculateCommercials(input, theatreTimes);
-  var commercialProfit = commercialEarnings.profit * park;
+  const commercialEarnings = calculateCommercials(input, theatreTimes,pf);
+  var commercialProfit = commercialEarnings.profit ;
   var commercialCount = commercialEarnings.count;
   }
 
@@ -63,37 +64,40 @@ const getMaxProfit = (input)=>{
 
 
 //Calculating the Theatre earnings and solution to compare with others
-const calculateTheatre = (input,time)=>{
+const calculateTheatre = (input,time,pf)=>{
     let times = 0 + time;
-    if (input < 5) return {count:times, profit:input};
+    if (input < 5) return {count:times, profit:pf};
 
 
     const currentUnit = input-5;
+    let profit = pf +(currentUnit * 1500)
     times = times+1;
 
-    return calculateTheatre(currentUnit,times);
+    return calculateTheatre(currentUnit,times,profit);
 }
 
 
 //Calculating the Theatre earnings and solution to compare with others
-const calculatePub = (input, time) => {
+const calculatePub = (input, time,pf) => {
   let times = 0 + time;
-  if (input < 4) return { count: times, profit: input };
+  if (input < 4) return { count: times, profit: pf };
 
   const currentUnit = input - 4;
+  let profit = pf + (currentUnit * 1000);
   times = times + 1;
 
-  return calculatePub(currentUnit, times);
+  return calculatePub(currentUnit, times, profit);
 };
 
 
 //Calculating the Theatre earnings and solution to compare with others
-const calculateCommercials = (input, time) => {
+const calculateCommercials = (input, time,pf) => {
   let times = 0 + time;
-  if (input < 10) return { count: times, profit: input };
+  if (input < 10) return { count: times, profit: pf };
 
   const currentUnit = input - 10;
+  let profit = pf + (currentUnit * 3000);
   times = times + 1;
 
-  return calculateCommercials(currentUnit, times);
+  return calculateCommercials(currentUnit, times, profit);
 };
